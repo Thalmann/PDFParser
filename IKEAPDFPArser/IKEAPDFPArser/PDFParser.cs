@@ -22,7 +22,7 @@ namespace IKEAPDFWorkingScheduleParser
         {
         }
 
-        public string[] GetString(string fileName)
+        public string GetString(string fileName)
         {
             StringBuilder text = new StringBuilder();
 
@@ -40,7 +40,7 @@ namespace IKEAPDFWorkingScheduleParser
                     pdfReader.Close();
                 }
             }
-            return Regex.Split(text.ToString(), "(?=Mandag)|(?=Tirsdag)|(?=Onsdag)|(?=Torsdag)|(?=Fredag)|(?=Lørdag)|(?=Søndag)"); 
+            return text.ToString();
         }
     }
 }

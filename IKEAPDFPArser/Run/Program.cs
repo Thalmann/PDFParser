@@ -19,10 +19,10 @@ namespace Run
             PDFParser pdfToText = new PDFParser();
             iCal iCalParser = new iCal();
 
-            string[] text = pdfToText.GetString("bruno.pdf");
-            events = textToEvent.TextToEvents(text);
-            byte[] ics = iCalParser.ICalSerializeToBytes(iCalParser.CreateICalendar(events), "hej");
-            File.WriteAllBytes("output.txt",ics);
+            //string[] text = pdfToText.GetString("bruno.pdf");
+            //events = textToEvent.TextToEvents(text);
+            //byte[] ics = iCalParser.ICalSerializeToBytes(iCalParser.CreateICalendar(events), "hej");
+            //File.WriteAllBytes("output.txt",ics);
         }
     }
 }
