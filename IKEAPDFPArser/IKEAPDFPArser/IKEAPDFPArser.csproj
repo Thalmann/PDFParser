@@ -30,6 +30,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DDay.Collections">
+      <HintPath>..\dlls\DDay.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal">
+      <HintPath>..\dlls\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="DeadDog">
+      <HintPath>..\dlls\DeadDog.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Calendar.v3">
+      <HintPath>..\dlls\Google.Apis.Calendar.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Calendar">
+      <HintPath>..\dlls\Google.GData.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Client">
+      <HintPath>..\dlls\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions">
+      <HintPath>..\dlls\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\dlls\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +63,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CalendarEvent.cs" />
+    <Compile Include="iCal.cs" />
+    <Compile Include="PDFToText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextToEvent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

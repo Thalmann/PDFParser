@@ -1,0 +1,730 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeadDog</name>
+    </assembly>
+    <members>
+        <member name="T:DeadDog.StringParser">
+            <summary>
+            Defines a set of methods used to parse a string and thus retriving data.
+            </summary>
+        </member>
+        <member name="M:DeadDog.StringParser.#ctor(DeadDog.StringParser)">
+            <summary>
+            Initializes a new <see cref="T:DeadDog.StringParser"/> from an existing <see cref="T:DeadDog.StringParser"/> by cloning it.
+            </summary>
+            <param name="parser">The existing StringParser that should be cloned.</param>
+        </member>
+        <member name="M:DeadDog.StringParser.#ctor(DeadDog.URL)">
+            <summary>
+            Initializes a new <see cref="T:DeadDog.StringParser"/> by downloading the html from a <see cref="T:DeadDog.URL"/> path.
+            </summary>
+            <param name="url">The url from where html data will be downloaded.</param>
+        </member>
+        <member name="M:DeadDog.StringParser.#ctor(DeadDog.URL,System.Text.Encoding)">
+            <summary>
+            Initializes a new <see cref="T:DeadDog.StringParser"/> by downloading the html from a <see cref="T:DeadDog.URL"/> path.
+            </summary>
+            <param name="url">The url from where html data will be downloaded.</param>
+            <param name="encoding">Specifies the encoding that should be used when reading the html data.</param>
+        </member>
+        <member name="M:DeadDog.StringParser.#ctor(System.String)">
+            <summary>
+            Initializes a new <see cref="T:DeadDog.StringParser"/> from a string.
+            </summary>
+            <param name="html">The string that is passed to the <see cref="T:DeadDog.StringParser"/> for parsing.</param>
+        </member>
+        <member name="M:DeadDog.StringParser.Contains(System.String)">
+            <summary>
+            Returns a value indicating whether the specified <see cref="T:System.String"/> object occurs within this <see cref="T:DeadDog.StringParser"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.String"/> object to seek.</param>
+            <returns>true if the value parameter occurs within this <see cref="T:DeadDog.StringParser"/>, or if value is the empty string (""); otherwise, false.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.First(System.String,System.String)">
+            <summary>
+            Checks which of to strings "comes first" in this <see cref="T:DeadDog.StringParser"/>.
+            </summary>
+            <param name="a">The first string to check.</param>
+            <param name="b">The second string to check.</param>
+            <returns>The index of the first string (0 for a, 1 for b). If both are at the same index, 0 is returned. If neither was found, returns -1.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.First(System.Int32@,System.String,System.String)">
+            <summary>
+            Checks which of to strings "comes first" in this <see cref="T:DeadDog.StringParser"/> and outputs its position.
+            </summary>
+            <param name="position">Is set to the position of the first occuring string. Set to -1 is neither where found.</param>
+            <param name="a">The first string to check.</param>
+            <param name="b">The second string to check.</param>
+            <returns>The index of the first string (0 for a, 1 for b). If both are at the same index, 0 is returned. If neither was found, returns -1.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.First(System.String[])">
+            <summary>
+            Checks which of an array of strings "comes first" in this <see cref="T:DeadDog.StringParser"/>.
+            </summary>
+            <param name="strings">The strings to check.</param>
+            <returns>Returns the index of the first string. If none where found, -1 is returned. If <paramref name="strings"/> is empty, -1 is returned.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.First(System.Int32@,System.String[])">
+            <summary>
+            Checks which of an array of strings "comes first" in this <see cref="T:DeadDog.StringParser"/> and outputs its position.
+            </summary>
+            <param name="position">Is set to the position of the first occuring string. Set to -1 is none of the strings where found.</param>
+            <param name="strings">The strings to check.</param>
+            <returns>Returns the index of the first string. If none where found, -1 is returned. If <paramref name="strings"/> is empty, -1 is returned.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.Trim">
+            <summary>
+            Removes all leading and trailing white-space characters from the current <see cref="T:DeadDog.StringParser"/> object.
+            </summary>
+            <returns>The string that remains after all white-space characters are removed from the start and end of the current <see cref="T:DeadDog.StringParser"/> object.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.Trim(System.Char[])">
+            <summary>
+            Removes all leading and trailing occurrences of a set of characters specified in an array from the current <see cref="T:DeadDog.StringParser"/> object.
+            </summary>
+            <param name="trimChars">An array of Unicode characters to remove or null.</param>
+            <returns>The string that remains after all occurrences of the characters in the trimChars parameter are removed from the start and end of the current <see cref="T:DeadDog.StringParser"/> object.
+            If trimChars is null, white-space characters are removed instead.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.TrimEnd(System.Char[])">
+            <summary>
+            Removes all trailing occurrences of a set of characters specified in an array from the current <see cref="T:DeadDog.StringParser"/> object.
+            </summary>
+            <param name="trimChars">An array of Unicode characters to remove or null.</param>
+            <returns>The string that remains after all occurrences of the characters in the trimChars parameter are removed from the end of the current <see cref="T:DeadDog.StringParser"/> object.
+            If trimChars is null, white-space characters are removed instead.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.TrimStart(System.Char[])">
+            <summary>
+            Removes all leading occurrences of a set of characters specified in an array from the current <see cref="T:DeadDog.StringParser"/> object.
+            </summary>
+            <param name="trimChars">An array of Unicode characters to remove or null.</param>
+            <returns>The string that remains after all occurrences of characters in the trimChars parameter are removed from the start of the current <see cref="T:DeadDog.StringParser"/> object.
+            If trimChars is null, white-space characters are removed instead.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.ToString">
+            <summary>
+            Returns the string contained by this <see cref="T:DeadDog.StringParser"/>.
+            </summary>
+            <returns>The string contained by this <see cref="T:DeadDog.StringParser"/>.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.Substring(System.Int32)">
+            <summary>
+            Retrieves a substring from this instance. The substring starts at a specified character position.
+            </summary>
+            <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
+            <returns>A <see cref="T:DeadDog.StringParser"/> equivalent to the substring that begins at startIndex in this instance, or a <see cref="T:DeadDog.StringParser"/> with its data set to System.String.Empty if startIndex is equal to the length of this instance.</returns>
+        </member>
+        <member name="M:DeadDog.StringParser.Substring(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a substring from this instance. The substring starts at a specified character position and has a specified length.
+            </summary>
+            <param name="startIndex">The zero-based starting character position of a substring in this instance.</param>
+            <param name="length">The number of characters in the substring.</param>
+            <returns>A <see cref="T:DeadDog.StringParser"/> equivalent to the substring of length length that begins at startIndex in this instance, or a <see cref="T:DeadDog.StringParser"/> with its data set to System.String.Empty if startIndex is equal to the length of this instance and length is zero.</returns>
+        </member>
+        <member name="T:DeadDog.TryParse`1">
+            <summary>
+            Defines a method that will attempt to parse a string into type <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type into which the string should be parsed.</typeparam>
+            <param name="input">The string to parse.</param>
+            <param name="value">The result of parsing. If parsing fails, this value should be disregarded.</param>
+            <returns>True, if parsing was succesfull; otherwise false.</returns>
+        </member>
+        <member name="T:DeadDog.Brackets">
+            <summary>
+            Specifies different types of brackets.
+            </summary>
+        </member>
+        <member name="F:DeadDog.Brackets.Round">
+            <summary>
+            Specifies rounded brackets: '(' and ')'
+            </summary>
+        </member>
+        <member name="F:DeadDog.Brackets.Square">
+            <summary>
+            Specifies square brackets: '[' and ']'
+            </summary>
+        </member>
+        <member name="F:DeadDog.Brackets.Curly">
+            <summary>
+            Specifies curly brackets: '{' and '}'
+            </summary>
+        </member>
+        <member name="F:DeadDog.Brackets.Angle">
+            <summary>
+            Specifies angled brackets: '&lt;' and '&gt;'
+            </summary>
+        </member>
+        <member name="F:DeadDog.Brackets.Inequality">
+            <summary>
+            Currently specifies ( and ), unknown why :S
+            </summary>
+        </member>
+        <member name="T:DeadDog.Console.Menu`1">
+            <summary>
+            Represents a menu where each option is associated with an <see cref="T:System.Func`1"/> delegate.
+            </summary>
+            <typeparam name="T">The type of elements returned by the menu.</typeparam>
+        </member>
+        <member name="T:DeadDog.Console.MenuBase`1">
+            <summary>
+            Represents the baseclass for a menu displayed by the <see cref="N:DeadDog.Console"/> type.
+            </summary>
+            <typeparam name="ActionType">The type of actions (delegates) associated with each entry in the menu.</typeparam>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.Console.MenuBase`1"/> class with a specified title.
+            </summary>
+            <param name="title">The title of the menu.</param>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.Add(System.String,`0,System.ConsoleColor)">
+            <summary>
+            Adds a new option to the menu.
+            </summary>
+            <param name="text">The text displayed for the new option.</param>
+            <param name="action">The action associated with the new option.</param>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.Add(`0,System.String,System.ConsoleColor)">
+            <summary>
+            Adds a new option to the menu.
+            </summary>
+            <param name="action">The action associated with the new option.</param>
+            <param name="text">The text displayed for the new option.</param>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.SetCancel(System.String,`0,System.ConsoleColor)">
+            <summary>
+            Sets the cancel option for the menu.
+            </summary>
+            <param name="text">The text displayed for the cancel option.</param>
+            <param name="action">The action associated with the cancel option.</param>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.SetCancel(`0,System.String,System.ConsoleColor)">
+            <summary>
+            Sets the cancel option for the menu.
+            </summary>
+            <param name="action">The action associated with the cancel option.</param>
+            <param name="text">The text displayed for the cancel option.</param>
+        </member>
+        <member name="M:DeadDog.Console.MenuBase`1.ShowAndSelectIndex(System.Boolean@)">
+            <summary>
+            Displays the menu and returns the selected index.
+            </summary>
+            <param name="cancelled">A value indicating if the cancel-option was selected.</param>
+            <returns>The index of the selected option.</returns>
+        </member>
+        <member name="P:DeadDog.Console.MenuBase`1.PaddingChar">
+            <summary>
+            Gets or sets the char used to pad the menu.
+            </summary>
+        </member>
+        <member name="P:DeadDog.Console.MenuBase`1.Title">
+            <summary>
+            Gets or sets the title of the menu.
+            </summary>
+        </member>
+        <member name="P:DeadDog.Console.MenuBase`1.CanCancel">
+            <summary>
+            Gets a boolean value indicating whether or not the menu has a "cancel" option.
+            </summary>
+        </member>
+        <member name="P:DeadDog.Console.MenuBase`1.Count">
+            <summary>
+            Gets the number of options available in the menu (excluding the cancel option).
+            </summary>
+        </member>
+        <member name="P:DeadDog.Console.MenuBase`1.Item(System.Int32)">
+            <summary>
+            Gets the set of action and text at a specified index.
+            </summary>
+            <param name="index">The index at which the action and text is retrieved. If index == <see cref="P:DeadDog.Console.MenuBase`1.Count"/>, the cancel option is returned.</param>
+            <returns>A tuple containing the action and text at the specified index.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Menu`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.Console.Menu`1"/> class with a specified title.
+            </summary>
+            <param name="title">The title of the menu.</param>
+        </member>
+        <member name="M:DeadDog.Console.Menu`1.Add(System.String,`0,System.ConsoleColor)">
+            <summary>
+            Adds a new option to the menu, which returns a constant value.
+            </summary>
+            <param name="text">The text displayed for the new option.</param>
+            <param name="value">The value returned by the new option.</param>
+        </member>
+        <member name="M:DeadDog.Console.Menu`1.SetCancel(System.String,System.ConsoleColor)">
+            <summary>
+            Sets the cancel option for the menu.
+            The default value of <typeparamref name="T"/> is returned if the cancel option is selected.
+            </summary>
+            <param name="text">The text displayed for the cancel option.</param>
+        </member>
+        <member name="M:DeadDog.Console.Menu`1.Show">
+            <summary>
+            Shows the menu and waits for an option to be selected.
+            When an option has been selected, its corresponding delegate is executed.
+            </summary>
+            <returns>The value returned by the delegate called (dependant on the option selected).</returns>
+        </member>
+        <member name="M:DeadDog.Console.Menu`1.Show(System.Boolean)">
+            <summary>
+            Shows the menu and waits for an option to be selected.
+            When an option has been selected, its corresponding delegate is executed.
+            </summary>
+            <param name="repeat">A boolean indicating whether the menu should be displayed repeatedly until the cancel option is selected.</param>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> that contains the selected elements (one for each time the menu is displayed).</returns>
+        </member>
+        <member name="T:DeadDog.IHTMLBuffer">
+            <summary>
+            Defines methods used by an HTML buffer.
+            </summary>
+        </member>
+        <member name="M:DeadDog.IHTMLBuffer.Remove(DeadDog.HTMLPage)">
+            <summary>
+            Removes a page from the buffer.
+            </summary>
+            <param name="page">The page to remove from the buffer.</param>
+            <returns>A boolean value indicating if the page was removed.</returns>
+        </member>
+        <member name="T:DeadDog.Console.Menu">
+            <summary>
+            Represents a menu where each option is associated with an <see cref="T:System.Action"/> delegate.
+            </summary>
+        </member>
+        <member name="M:DeadDog.Console.Menu.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.Console.Menu"/> class with a specified title.
+            </summary>
+            <param name="title">The title of the menu.</param>
+        </member>
+        <member name="M:DeadDog.Console.Menu.SetCancel(System.String)">
+            <summary>
+            Sets the cancel option for the menu. No action will take place if the cancel option is selected.
+            </summary>
+            <param name="text">The text displayed for the cancel option.</param>
+        </member>
+        <member name="M:DeadDog.Console.Menu.Show">
+            <summary>
+            Shows the menu and waits for an option to be selected.
+            When an option has been selected, its corresponding delegate is executed.
+            </summary>
+        </member>
+        <member name="M:DeadDog.Console.Menu.Show(System.Boolean)">
+            <summary>
+            Shows the menu and waits for an option to be selected.
+            When an option has been selected, its corresponding delegate is executed.
+            </summary>
+            <param name="repeat">A boolean indicating whether the menu should be displayed repeatedly until the cancel option is selected.</param>
+        </member>
+        <member name="T:DeadDog.Console.TryParse`1">
+            <summary>
+            Represents a method that attempts to parse a string to a different type.
+            </summary>
+            <typeparam name="T">The type that the string should be parsed to.</typeparam>
+            <param name="text">The input string to parse.</param>
+            <param name="value">When the method returns, contains the parsed value; if parsing was succesfull.
+            If parsing fails, this value should be disregarded.</param>
+            <returns>A boolean value indicating weather parsing was succesfull.</returns>
+        </member>
+        <member name="T:DeadDog.Console.Parsing">
+            <summary>
+            Defines method enabling simple input of values directly from <see cref="N:DeadDog.Console"/>.    
+            </summary>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetBoolean(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> into a boolean value.
+            "yes" and "ja" returns true; "no" and "nej" returns false.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <returns>The parsed boolean value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetInt32(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an integer value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <returns>The parsed integer value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetInt32(System.String,System.Func{System.Int32,System.Boolean})">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an integer value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <param name="predicate">A method that determines if the parsed integer is valid in the current context.</param>
+            <returns>The parsed integer value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetDouble(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an double value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <returns>The parsed double value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetDouble(System.String,System.Func{System.Double,System.Boolean})">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an double value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <param name="predicate">A method that determines if the parsed double is valid in the current context.</param>
+            <returns>The parsed double value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetDateTime(System.String)">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an <see cref="T:System.DateTime"/> value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <returns>The parsed <see cref="T:System.DateTime"/> value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetDateTime(System.String,System.Func{System.DateTime,System.Boolean})">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an <see cref="T:System.DateTime"/> value.
+            The method will exit only when input could be parsed (see the GetValue methods).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <param name="predicate">A method that determines if the parsed <see cref="T:System.DateTime"/> is valid in the current context.</param>
+            <returns>The parsed <see cref="T:System.DateTime"/> value.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetString(System.String)">
+            <summary>
+            Returns a string from user-input (based on GetValue, but uses no "parsing" from string to string).
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <returns>The string read by the console.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetString(System.String,System.Func{System.String,System.Boolean})">
+            <summary>
+            Returns a string from user-input (based on GetValue, but uses no "parsing" from string to string).
+            The method will exit only when a predicate is matched.
+            </summary>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> declaring the type of info required.</param>
+            <param name="predicate">A method that determines if the input string is valid in the current context.</param>
+            <returns>A string meeting the constraints defined by <paramref name="predicate"/>.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetValue``1(System.String,DeadDog.Console.TryParse{``0})">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an object of type <typeparamref name="T"/>.
+            The method will display <paramref name="text"/> in the console and prompt the user for input.
+            The method will exit only when input could be parsed.
+            </summary>
+            <typeparam name="T">The type that the input should be parsed to.</typeparam>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> explaining which type of input is required.</param>
+            <param name="tryparse">A method capable of parsing console input to an object of type <typeparamref name="T"/>.</param>
+            <returns>The first item of type <typeparamref name="T"/> that could be parsed.</returns>
+        </member>
+        <member name="M:DeadDog.Console.Parsing.GetValue``1(System.String,DeadDog.Console.TryParse{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Parses a <see cref="T:System.String"/> into an object of type <typeparamref name="T"/>.
+            The method will display <paramref name="text"/> in the console and prompt the user for input.
+            The method will exit only when input could be parsed and the specified predicate is met.
+            </summary>
+            <typeparam name="T">The type that the input should be parsed to.</typeparam>
+            <param name="text">The text to display in <see cref="N:DeadDog.Console"/> explaining which type of input is required.</param>
+            <param name="tryparse">A method capable of parsing console input to an object of type <typeparamref name="T"/>.</param>
+            <param name="predicate">A method determining if the parsed info is valid. If not, that parsing is considered to have failed.</param>
+            <returns>The first item of type <typeparamref name="T"/> that could be parsed.</returns>
+        </member>
+        <member name="T:DeadDog.HTMLPage">
+            <summary>
+            Represent a webpage (accessed via http) by storing it's html text.
+            </summary>
+        </member>
+        <member name="M:DeadDog.HTMLPage.Remove">
+            <summary>
+            Removes this <see cref="T:DeadDog.HTMLPage"/> from its managing buffer.
+            </summary>
+        </member>
+        <member name="M:DeadDog.HTMLPage.#ctor(System.String,DeadDog.URL,DeadDog.URL)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.HTMLPage"/> class.
+            </summary>
+            <param name="html">The html-code associated with the <see cref="T:DeadDog.HTMLPage"/>.</param>
+            <param name="request">The requested url that is associated with the <see cref="T:DeadDog.HTMLPage"/>.</param>
+            <param name="response">The response url that is associated with the <see cref="T:DeadDog.HTMLPage"/>.</param>
+        </member>
+        <member name="M:DeadDog.HTMLPage.decodeHTML(System.String)">
+            <summary>
+            Converts a string of html into a unicode text-string.
+            </summary>
+            <param name="html">The html to convert.</param>
+            <returns>The converted html.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLPage.ToString">
+            <summary>
+            Converts this <see cref="T:DeadDog.HTMLPage"/> to a human-readable string.
+            </summary>
+            <returns>A string that represents this <see cref="T:DeadDog.HTMLPage"/>.</returns>
+        </member>
+        <member name="P:DeadDog.HTMLPage.HTML">
+            <summary>
+            Gets the actual html associated with the <see cref="T:DeadDog.HTMLPage"/>.
+            </summary>
+        </member>
+        <member name="P:DeadDog.HTMLPage.RequestedURL">
+            <summary>
+            Gets the requested url when this page was downloaded.
+            </summary>
+        </member>
+        <member name="P:DeadDog.HTMLPage.ResponseURL">
+            <summary>
+            Gets the url (in response) from which html was downloaded.
+            </summary>
+        </member>
+        <member name="P:DeadDog.HTMLPage.BufferLevel">
+            <summary>
+            Gets or sets the level (importance) of this page within it's buffer.
+            </summary>
+        </member>
+        <member name="P:DeadDog.HTMLPage.Buffer">
+            <summary>
+            Gets the <see cref="T:DeadDog.IHTMLBuffer"/> that manages this <see cref="T:DeadDog.HTMLPage"/>.
+            </summary>
+        </member>
+        <member name="M:DeadDog.FTP.FTPClient.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DeadDog.Function.FTP class.
+            </summary>
+            <param name="server">The server adress. If "ftp://" is omitted in the parameter it is applied by the constructor.</param>
+            <param name="username">The username used for logging on to the server.</param>
+            <param name="password">The password used for logging on to the server.</param>
+        </member>
+        <member name="M:DeadDog.FTP.FTPClient.TestConnection">
+            <summary>
+            Gets a bool indicating whether a connectiong could be established to the server.
+            </summary>
+        </member>
+        <member name="P:DeadDog.FTP.FTPClient.Server">
+            <summary>
+            Gets the server adress. E.g. "ftp://myserver.com/" - Including both "ftp://" and "/"
+            </summary>
+        </member>
+        <member name="T:DeadDog.Console.MenuLabeling">
+            <summary>
+            Defines the labels used when displaying menues.
+            </summary>
+        </member>
+        <member name="F:DeadDog.Console.MenuLabeling.None">
+            <summary>
+            No labeling is used.
+            </summary>
+        </member>
+        <member name="F:DeadDog.Console.MenuLabeling.Numbers">
+            <summary>
+            Numbers (0-9) are used.
+            </summary>
+        </member>
+        <member name="F:DeadDog.Console.MenuLabeling.Letters">
+            <summary>
+            Letters (a-z) are used.
+            </summary>
+        </member>
+        <member name="F:DeadDog.Console.MenuLabeling.NumbersAndLetters">
+            <summary>
+            Numbers (0-9) and then letters (a-z) are used.
+            </summary>
+        </member>
+        <member name="T:DeadDog.URL">
+            <summary>
+            Uses <see cref="T:System.Net.HttpWebRequest"/> and <see cref="T:System.Net.HttpWebResponse"/> to allow simple http-download.
+            </summary>
+        </member>
+        <member name="M:DeadDog.URL.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.URL"/> class.
+            </summary>
+            <param name="url">The http url associated with this instance. Must begin with "http://"</param>
+        </member>
+        <member name="M:DeadDog.URL.GetHTML">
+            <summary>
+            Creates a webrequest and returns the response stream converted to a <see cref="T:System.String"/> using ASCII encoding.
+            </summary>
+            <returns>The contents of the URL as a <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:DeadDog.URL.GetHTML(System.Text.Encoding)">
+            <summary>
+            Creates a webrequest and returns the response stream converted to a <see cref="T:System.String"/> using the specified encoding.
+            </summary>
+            <param name="encoding">The encoding used to convert the binary stream.</param>
+            <returns>The contents of the URL as a <see cref="T:System.String"/>.</returns>
+        </member>
+        <member name="M:DeadDog.URL.GetImage">
+            <summary>
+            Creates a webrequest and returns the response stream converted to a <see cref="T:System.Drawing.Image"/>.
+            </summary>
+            <returns>The contents of the URL as a <see cref="T:System.Drawing.Image"/>.</returns>
+        </member>
+        <member name="M:DeadDog.URL.GetFile(System.String)">
+            <summary>
+            Creates a webrequest and writes the response stream to a file.
+            </summary>
+            <param name="localFile">The local path where the contents of the url is stored.</param>
+        </member>
+        <member name="M:DeadDog.URL.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:DeadDog.URL"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:DeadDog.URL"/></returns>
+        </member>
+        <member name="P:DeadDog.URL.Address">
+            <summary>
+            Gets the url-address associated with this instance.
+            </summary>
+        </member>
+        <member name="T:DeadDog.HTMLBuffer`1">
+            <summary>
+            Provides methods for dynamically buffering webpages and storing the retrieved data in appropriate types.
+            </summary>
+            <typeparam name="T">The super-type for the pages stored in memory.</typeparam>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Convert(System.String,DeadDog.URL,DeadDog.URL)">
+            <summary>
+            When overridden in a derived type, this method will perform the actual parsing of information - from the read html to the proper object of type <typeparamref name="T"/> or a derivative.
+            This method may never return null.
+            </summary>
+            <param name="html">The html-code that is to be converted.</param>
+            <param name="request">The requested url from the http-request.</param>
+            <param name="response">The response url from the http-request.</param>
+            <returns>An object of type <typeparamref name="T"/> or one of it derivatives, that represents the loaded page.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Save(System.String)">
+            <summary>
+            Writes all the buffered data to a specified file, for later retrieval.
+            </summary>
+            <param name="filepath">The file to which the buffered data should be written. The file is overridden.</param>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Save(System.String,System.Func{System.Int32,System.Boolean})">
+            <summary>
+            Writes part of the buffered data to a specified file, for later retrieval.
+            </summary>
+            <param name="filepath">The file to which the buffered data should be written. The file is overridden.</param>
+            <param name="shouldSave">A function that, from bufferlevels, determines which pages should be stored.</param>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DeadDog.HTMLBuffer`1"/> class from a prestored file. See the <see cref="M:DeadDog.HTMLBuffer`1.Save(System.String)"/> method for more.
+            </summary>
+            <param name="filepath">The file from which the buffer should be restored.</param>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.#ctor">
+            <summary>
+            Initializes a new empty instance of the <see cref="T:DeadDog.HTMLBuffer`1"/> class.
+            </summary>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.OnTranslateURL(DeadDog.TranslateURLEventArgs)">
+            <summary>
+            Raises the <see cref="E:DeadDog.HTMLBuffer`1.TranslateURL"/> event.
+            </summary>
+            <param name="e">A <see cref="T:DeadDog.TranslateURLEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.ReadURL(DeadDog.URL)">
+            <summary>
+            Reads a <see cref="T:DeadDog.URL"/> address using the default encoding.
+            </summary>
+            <param name="url">The <see cref="T:DeadDog.URL"/> to read.</param>
+            <returns>An object of type <typeparamref name="T"/> or one of it derivatives, that represents the loaded page.
+            This is read from buffer, if preloaded; or via the <see cref="M:DeadDog.HTMLBuffer`1.Convert(System.String,DeadDog.URL,DeadDog.URL)"/> method, if not.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.ReadURL(System.String)">
+            <summary>
+            Reads a url-address using the default encoding.
+            </summary>
+            <param name="url">The url-address to read.</param>
+            <returns>An object of type <typeparamref name="T"/> or one of it derivatives, that represents the loaded page.
+            This is read from buffer, if preloaded; or via the <see cref="M:DeadDog.HTMLBuffer`1.Convert(System.String,DeadDog.URL,DeadDog.URL)"/> method, if not.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.ReadURL(DeadDog.URL,System.Text.Encoding)">
+            <summary>
+            Reads a <see cref="T:DeadDog.URL"/> address using the specified encoding.
+            </summary>
+            <param name="url">The <see cref="T:DeadDog.URL"/> to read.</param>
+            <param name="encoding">The encoding used for reading.</param>
+            <returns>An object of type <typeparamref name="T"/> or one of it derivatives, that represents the loaded page.
+            This is read from buffer, if preloaded; or via the <see cref="M:DeadDog.HTMLBuffer`1.Convert(System.String,DeadDog.URL,DeadDog.URL)"/> method, if not.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.ReadURL(System.String,System.Text.Encoding)">
+            <summary>
+            Reads a url address using the specified encoding.
+            </summary>
+            <param name="url">The url-address to read.</param>
+            <param name="encoding">The encoding used for reading.</param>
+            <returns>An object of type <typeparamref name="T"/> or one of it derivatives, that represents the loaded page.
+            This is read from buffer, if preloaded; or via the <see cref="M:DeadDog.HTMLBuffer`1.Convert(System.String,DeadDog.URL,DeadDog.URL)"/> method, if not.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Remove(DeadDog.URL)">
+            <summary>
+            Removes an url-address from the <see cref="T:DeadDog.HTMLBuffer`1"/>.
+            </summary>
+            <param name="url">The address to remove.</param>
+            <returns>A boolean value indicating if the address was removed (if it pre-existed).</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Remove(`0)">
+            <summary>
+            Removes a page (of type <typeparamref name="T"/>) from the <see cref="T:DeadDog.HTMLBuffer`1"/>.
+            </summary>
+            <param name="page">The page to remove.</param>
+            <returns>A boolean value indicating if the page was removed (if it pre-existed).</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Remove(System.Int32)">
+            <summary>
+            Removes all pages at a specified bufferlevel from the <see cref="T:DeadDog.HTMLBuffer`1"/>.
+            </summary>
+            <param name="bufferLevel">The bufferlevel that should be removed.</param>
+            <returns>The number of pages removed from the <see cref="T:DeadDog.HTMLBuffer`1"/>.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Remove(System.Int32,System.Int32)">
+            <summary>
+            Removes all pages in a specified bufferlevel range.
+            </summary>
+            <param name="fromLevel">The min or max bufferlevel to remove.</param>
+            <param name="toLevel">The min or max bufferlevel to remove.</param>
+            <returns>The number of pages removed from the <see cref="T:DeadDog.HTMLBuffer`1"/>.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Remove(System.Func{`0,System.Boolean})">
+            <summary>
+            Removes all pages that meet a specified predicate.
+            </summary>
+            <param name="predicate">A function that determines if a page should be removed. The method must return true if the page is to be removed; false if not.</param>
+            <returns>The number of pages removed from the <see cref="T:DeadDog.HTMLBuffer`1"/>.</returns>
+        </member>
+        <member name="M:DeadDog.HTMLBuffer`1.Dispose">
+            <summary>
+            Disposes unmanaged resourced.
+            </summary>
+        </member>
+        <member name="P:DeadDog.HTMLBuffer`1.Encoding">
+            <summary>
+            Gets or sets the default encoding used by the buffer. Initializes to ASCII encoding.
+            </summary>
+        </member>
+        <member name="E:DeadDog.HTMLBuffer`1.TranslateURL">
+            <summary>
+            Occurs when the buffer is about to read a url via a http-request.
+            </summary>
+        </member>
+        <member name="T:DeadDog.CutDirection">
+            <summary>
+            Specifies which part of a <see cref="T:System.String"/> should be removed when cutting.
+            </summary>
+        </member>
+        <member name="F:DeadDog.CutDirection.Left">
+            <summary>
+            Removes the the left side.
+            </summary>
+        </member>
+        <member name="F:DeadDog.CutDirection.Right">
+            <summary>
+            Removes the right side.
+            </summary>
+        </member>
+    </members>
+</doc>
