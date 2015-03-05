@@ -22,7 +22,7 @@ namespace IKEAPDFWorkingScheduleParser
         {
         }
 
-        public string[] GetStringArray(string fileName)
+        public string[] GetString(string fileName)
         {
             StringBuilder text = new StringBuilder();
 
