@@ -15,14 +15,12 @@ namespace Run
 
         static void Main(string[] args)
         {
-            List<CalendarEvent> events = new List<CalendarEvent>();
             TextToEvent textToEvent = new TextToEvent();
             PDFParser pdfToText = new PDFParser();
             iCal iCalParser = new iCal();
             Parser p = new Parser();
 
-            string[] text = p.Parse(pdfToText.GetString("bruno.pdf"));
-            events = textToEvent.TextToEvents(text);
+            CalendarEvent[] events = p.Parse(pdfToText.GetString("bruno.pdf"));
             byte[] ics = iCalParser.ICalSerializeToBytes(iCalParser.CreateICalendar(events), "hej");
             File.WriteAllBytes("output.txt", ics);
         }

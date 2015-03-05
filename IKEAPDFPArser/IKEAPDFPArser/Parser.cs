@@ -13,12 +13,13 @@ namespace IKEAPDFPArser
         private string stringPattern =  @"\d\d:\d\d\s-\s\d\d:\d\d\s\d\d:\d\d\s\d\d:\d\d\s\d\d-\d\d";
         public Parser(){}
 
-        public string[] Parse(string text)
+        public CalendarEvent[] Parse(string text)
         {
+            List<CalendarEvent> events = new List<CalendarEvent>();
             string[] lines = splitToDays(text);
             lines = findWorkingDays(lines);
             var e = getEventTime(Regex.Match(lines[0], stringPattern).ToString());
-            return lines;
+            return events.ToArray();
         }
 
         private string[] splitToDays(string s)
@@ -45,6 +46,17 @@ namespace IKEAPDFPArser
             DateTime end = new DateTime(2015, month, day, Int16.Parse(s[8].ToString() + s[9]), Int16.Parse(s[11].ToString() + s[12]), 0);
 
             return Tuple.Create<DateTime, DateTime>(start, end);
+        }
+
+        private CalendarEvent[] getEvents(string[] workingDays)
+        {
+            List<CalendarEvent> events = new List<CalendarEvent>();
+            foreach (string s in workingDays)
+            {
+                var eventTimes = getEventTime(Regex.Match(s, stringPattern).ToString());
+                events.Add(new CalendarEvent("Arbejde IKEA", eventTimes.Item1, eventTimes.Item2));
+            }
+            return events.ToArray();
         }
 
     }

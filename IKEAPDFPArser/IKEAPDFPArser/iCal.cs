@@ -15,11 +15,11 @@ namespace IKEAPDFWorkingScheduleParser
         {
         }
 
-        public iCalendar CreateICalendar(List<CalendarEvent> listOfCalendarEvents)
+        public iCalendar CreateICalendar(CalendarEvent[] calendarEvents)
         {
             iCalendar iCal = new iCalendar();
 
-            foreach (CalendarEvent ce in listOfCalendarEvents)
+            foreach (CalendarEvent ce in calendarEvents)
             {
                 Event e = new Event();
 
