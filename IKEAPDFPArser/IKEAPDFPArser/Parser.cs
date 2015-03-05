@@ -7,17 +7,34 @@ using System.Threading.Tasks;
 
 namespace IKEAPDFPArser
 {
-    class Parser
+    public class Parser
     {
-        public void Parse(string text)
-        {
+        public Parser(){}
 
+        public string[] Parse(string text)
+        {
+            string[] lines = splitToDays(text);
+            lines = findWorkingDays(lines);
+            return lines;
         }
 
         private string[] splitToDays(string s)
         {
             return Regex.Split(s.ToString(), "(?=Mandag)|(?=Tirsdag)|(?=Onsdag)|(?=Torsdag)|(?=Fredag)|(?=Lørdag)|(?=Søndag)"); 
         }
+
+        private string[] findWorkingDays(string[] days)
+        {
+            List<string> workingDays = new List<string>();
+            string pattern = @"\d\d:\d\d\s-\s\d\d:\d\d\s\d\d:\d\d\s\d\d:\d\d\s\d\d-\d\d";
+            foreach (string line in days)
+            {
+                if (Regex.IsMatch(line, pattern))
+                    workingDays.Add(line);
+            }
+            return workingDays.ToArray();
+        }
+
     }
 
 }
