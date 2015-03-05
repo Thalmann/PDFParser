@@ -16,7 +16,7 @@ namespace Run
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
             TextToEvent textToEvent = new TextToEvent();
-            PDFToText pdfToText = new PDFToText();
+            PDFParser pdfToText = new PDFParser();
             iCal iCalParser = new iCal();
 
             string[] text = pdfToText.ReadPdfFile("bruno.pdf");

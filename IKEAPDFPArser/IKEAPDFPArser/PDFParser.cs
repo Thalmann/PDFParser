@@ -16,9 +16,9 @@ using System.Text.RegularExpressions;
 
 namespace IKEAPDFWorkingScheduleParser
 {
-    public class PDFToText
+    public class PDFParser
     {
-        public PDFToText()
+        public PDFParser()
         {
         }
 
