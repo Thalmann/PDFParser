@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IKEAPDFWorkingScheduleParser
+namespace IKEAPDFPArser
 {
     public class CalendarEvent
     {
-        public CalendarEvent()
-        {
-
-        }
-
-        public CalendarEvent(string title, DateTime start, DateTime end)
+        public CalendarEvent(EventType title, DateTime start, DateTime end)
         {
             this.title = title;
             this.start = start;
             this.end = end;
         }
 
-        private string title;
+        private EventType title;
 
-        public string Title
+        public EventType Title
         {
             get { return title; }
             set { title = value; }
