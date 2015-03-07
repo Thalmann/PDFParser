@@ -7,7 +7,7 @@ using DDay.iCal;
 using DDay.iCal.Serialization;
 using DDay.iCal.Serialization.iCalendar;
 
-namespace IKEAPDFWorkingScheduleParser
+namespace IKEAPDFPArser
 {
     public class iCal
     {
