@@ -69,6 +69,7 @@
     <Compile Include="Parser.cs" />
     <Compile Include="PDFParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkingAreaExtensions.cs" />
     <Content Include="TextToEvent.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
