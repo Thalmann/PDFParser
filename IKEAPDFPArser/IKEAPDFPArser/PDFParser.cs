@@ -14,7 +14,7 @@ using System.IO;
 using DeadDog;
 using System.Text.RegularExpressions;
 
-namespace IKEAPDFWorkingScheduleParser
+namespace IKEAPDFPArser
 {
     public class PDFParser
     {
