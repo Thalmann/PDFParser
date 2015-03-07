@@ -18,7 +18,8 @@ namespace IKEAPDFPArser
             List<CalendarEvent> events = new List<CalendarEvent>();
             string[] lines = splitToDays(text);
             lines = findWorkingDays(lines);
-            var e = getEventTime(Regex.Match(lines[0], stringPattern).ToString());
+            //var e = getEventTime(Regex.Match(lines[0], stringPattern).ToString());
+            events = getEvents(lines);
             return events.ToArray();
         }
 
@@ -48,15 +49,24 @@ namespace IKEAPDFPArser
             return Tuple.Create<DateTime, DateTime>(start, end);
         }
 
-        private CalendarEvent[] getEvents(string[] workingDays)
+        private List<CalendarEvent> getEvents(string[] workingDays)
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
             foreach (string s in workingDays)
             {
                 var eventTimes = getEventTime(Regex.Match(s, stringPattern).ToString());
-                events.Add(new CalendarEvent("Arbejde IKEA", eventTimes.Item1, eventTimes.Item2));
+                events.Add(new CalendarEvent(getEventType(s), eventTimes.Item1, eventTimes.Item2));
             }
-            return events.ToArray();
+            return events;
+        }
+
+        private EventType getEventType(string workingDay)
+        {
+            if (workingDay.Contains("Feriedag"))
+                return EventType.Holiday;
+            else if (workingDay.ToLower().Contains("møde"))
+                return EventType.Meeting;
+            return EventType.Standard;
         }
 
     }
