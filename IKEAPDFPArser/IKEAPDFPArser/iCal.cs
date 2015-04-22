@@ -23,7 +23,7 @@ namespace IKEAPDFPArser
             {
                 Event e = new Event();
 
-                e.Summary = ce.Title.ToString();
+                e.Summary = ce.Title.ToCalendarString();
                 e.DTStart = new iCalDateTime(ce.Start);
                 e.DTEnd = new iCalDateTime(ce.End);
 

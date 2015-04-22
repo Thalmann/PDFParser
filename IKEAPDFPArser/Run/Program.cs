@@ -18,7 +18,7 @@ namespace Run
             iCal iCalParser = new iCal();
             Parser p = new Parser();
 
-            CalendarEvent[] events = p.Parse(pdfToText.GetString("bruno.pdf"));
+            CalendarEvent[] events = p.Parse(pdfToText.GetString("bruno.pdf")).Where(i => i.Title == EventType.Standard).ToArray();
             byte[] ics = iCalParser.ICalSerializeToBytes(iCalParser.CreateICalendar(events), "hej");
             File.WriteAllBytes("output.txt", ics);
         }
