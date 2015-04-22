@@ -40,6 +40,9 @@ namespace IKEAPDFPArser
                     pdfReader.Close();
                 }
             }
+            else
+                throw new FileNotFoundException();
+
             return text.ToString();
         }
     }
