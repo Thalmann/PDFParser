@@ -14,7 +14,7 @@ namespace IKEAPDFPArser
     }
     public static class EventTypeExtensions
     {
-        public static string ToString(this EventType e)
+        public static string ToCalendarString(this EventType e)
         {
             switch (e)
             {
